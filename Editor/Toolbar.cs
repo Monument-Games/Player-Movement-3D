@@ -3,7 +3,7 @@ using UnityEditor.Toolbars;
 using UnityEditor.Overlays;
 using UnityEditor;
 
-namespace MonumentGames.PlayerMovement3D
+namespace MonumentGames.PlayerMovement3D.Editor
 {
     [EditorToolbarElement(id, typeof(SceneView))]
     class CreatePlayerButton : EditorToolbarButton
