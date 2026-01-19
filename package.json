@@ -1,0 +1,10 @@
+{
+  "name": "com.monumentgames.playermovement",
+  "version": "1.0.0",
+  "displayName": "Player Movement 3D",
+  "description": "Basic player movement for 3D environments",
+  "unity": "6000.2",
+  "author": {
+    "name": "Louisa Valerie Müller"
+  }
+}
