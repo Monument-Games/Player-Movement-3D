@@ -40,6 +40,11 @@ namespace MonumentGames.PlayerMovement3D.Editor
             newCam.position = new(0f, 0.5f, 0f);
             newObj.gameObject.GetComponent<PlayerMovement>().cam = newCam.gameObject.GetComponent<Camera>();
             Undo.RegisterCreatedObjectUndo(newCam.gameObject, "Created Camera");
+            
+            // If inventory package is installed, add Inventory stuff
+            #if INVENTORY
+            newObj.gameObject.AddComponent<PlayerInventory>();
+            #endif
         }
 
         void CreateInventory()
