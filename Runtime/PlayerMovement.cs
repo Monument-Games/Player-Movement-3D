@@ -9,8 +9,13 @@ namespace MonumentGames.PlayerMovement3D
         [SerializeField] private float verticalMouseMovement = 1f;
         [SerializeField] private bool invertVerticalMouse;
         [SerializeField] private bool invertHorizontalMouse;
+	private Rigidbody rb;
 
         public Camera cam;
+
+	public void Awake() {
+	    rb = GetComponent<Rigidbody>();
+	}
 
         public void Start() {
             Cursor.visible = false;
@@ -22,7 +27,7 @@ namespace MonumentGames.PlayerMovement3D
             var xMovement = Input.GetAxis("Vertical") * Time.deltaTime * movementSpeed;
             var yMovement = Input.GetAxis("Horizontal") * Time.deltaTime * movementSpeed;
 
-            transform.Translate(yMovement, 0, xMovement);
+            rb.MovePosition(new Vector3(yMovement, 0, xMovement));
 
             var h = horizontalMouseMovement * Input.GetAxis("Mouse X") * (invertHorizontalMouse ? -1 : 1);
             var v = verticalMouseMovement * Input.GetAxis("Mouse Y") * (invertVerticalMouse ? -1 : 1);
