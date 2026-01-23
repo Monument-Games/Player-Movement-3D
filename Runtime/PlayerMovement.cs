@@ -27,7 +27,8 @@ namespace MonumentGames.PlayerMovement3D
             var xMovement = Input.GetAxis("Vertical") * Time.deltaTime * movementSpeed;
             var yMovement = Input.GetAxis("Horizontal") * Time.deltaTime * movementSpeed;
 
-            rb.MovePosition(transform.position + new Vector3(yMovement, 0, xMovement));
+	    Vector3 newPos = transform.rotation * new Vector3(xMovement, 0, yMovement);
+            rb.MovePosition(transform.position + newPos);
 
             var h = horizontalMouseMovement * Input.GetAxis("Mouse X") * (invertHorizontalMouse ? -1 : 1);
             var v = verticalMouseMovement * Input.GetAxis("Mouse Y") * (invertVerticalMouse ? -1 : 1);
