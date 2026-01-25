@@ -63,7 +63,7 @@ namespace MonumentGames.PlayerMovement3D
 
         public void SetSprintSpeed(float speed) => sprintSpeed = speed;
 
-        public void GetSprintSpeed() => sprintSpeed;
+        public float GetSprintSpeed() => sprintSpeed;
 
         public void SetHorizontalSpeed(float speed) => horizontalMouseMovement = speed;
 
