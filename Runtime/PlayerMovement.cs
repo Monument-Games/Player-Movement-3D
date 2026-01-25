@@ -2,6 +2,8 @@ using UnityEngine;
 
 namespace MonumentGames.PlayerMovement3D
 {
+    using Config;
+
     public class PlayerMovement : MonoBehaviour
     {
         [SerializeField] private float movementSpeed = 10f;
