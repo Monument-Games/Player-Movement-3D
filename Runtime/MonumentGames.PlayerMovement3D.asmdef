@@ -1,5 +1,5 @@
 {
-	"name": "MonumentGames.PlayerMovement3D"
+	"name": "MonumentGames.PlayerMovement3D",
     "references" : [
         "MonumentGames.Config"
     ]
