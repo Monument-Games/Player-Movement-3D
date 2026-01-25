@@ -36,8 +36,8 @@ namespace MonumentGames.PlayerMovement3D
                 movSpeed = movementSpeed;
 
             // Calculate the added distance of the different axis based on the move speed
-            var xMovement = Input.GetAxis("Vertical") * Time.deltaTime * movementSpeed;
-            var yMovement = Input.GetAxis("Horizontal") * Time.deltaTime * movementSpeed;
+            var xMovement = Input.GetAxis("Vertical") * Time.deltaTime * movSpeed;
+            var yMovement = Input.GetAxis("Horizontal") * Time.deltaTime * movSpeed;
 
             // Adding the walked distance to the current position
             // and telling the Rigidbody to move to that new position
