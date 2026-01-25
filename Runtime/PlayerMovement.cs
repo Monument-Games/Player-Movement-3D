@@ -56,25 +56,29 @@ namespace MonumentGames.PlayerMovement3D
             if(cam.transform.eulerAngles.x + v > 90 && cam.transform.eulerAngles.x + v < 270) v = 0;
             cam.transform.eulerAngles += new Vector3(v, 0, 0);
         } 
-        
+
         public void SetMovementSpeed(float speed) => movementSpeed = speed;
 
         public float GetMovementSpeed() => movementSpeed;
 
+        public void SetSprintSpeed(float speed) => sprintSpeed = speed;
+
+        public void GetSprintSpeed() => sprintSpeed;
+
         public void SetHorizontalSpeed(float speed) => horizontalMouseMovement = speed;
-        
+
         public float GetHorizontalSpeed() => horizontalMouseMovement;
 
         public void SetVerticalSpeed(float speed) => verticalMouseMovement = speed;
-        
+
         public float GetVerticalSpeed() => verticalMouseMovement;
 
         public void SetInvertHorizontal(bool toggle) => invertHorizontalMouse = toggle;
-        
+
         public bool GetInvertHorizontal() => invertHorizontalMouse;
 
         public void SetInvertVertical(bool toggle) => invertVerticalMouse = toggle;
-        
+
         public bool GetInvertVertical() => invertVerticalMouse;
     }
 }
