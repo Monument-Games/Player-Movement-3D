@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace MonumentGames.PlayerMovement3D
 {
@@ -14,6 +15,9 @@ namespace MonumentGames.PlayerMovement3D
         [SerializeField] private bool invertHorizontalMouse;
 	    private Rigidbody rb;
 
+        private InputAction moveAction;
+        private InputAction lookAction;
+
         public Camera cam;
 
 	    public void Awake() {
@@ -23,6 +27,9 @@ namespace MonumentGames.PlayerMovement3D
         public void Start() {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+
+            moveAction = InputSystem.actions.FindAction("Move");
+            lookAction = InputSystem.actions.FindAction("Look");
         }
 
         public void Update()
@@ -30,14 +37,15 @@ namespace MonumentGames.PlayerMovement3D
             float movSpeed = 0;
 
             // Look if Sprint Key is pressed and set movementSpeed accordingly
-            if (Input.GetKey(Config.cfg.sprintKey))
+            if (Input.GetKeyn(Config.cfg.sprintKey))
                 movSpeed = sprintSpeed;
             else
                 movSpeed = movementSpeed;
 
             // Calculate the added distance of the different axis based on the move speed
-            var xMovement = Input.GetAxis("Vertical") * Time.deltaTime * movSpeed;
-            var yMovement = Input.GetAxis("Horizontal") * Time.deltaTime * movSpeed;
+            var moveVec = moveAction.ReadValue<Vector2>();
+            var xMovement = moveVec.x * Time.deltaTime * movSpeed;
+            var yMovement = moveVec.y * Time.deltaTime * movSpeed;
 
             // Adding the walked distance to the current position
             // and telling the Rigidbody to move to that new position
@@ -45,8 +53,9 @@ namespace MonumentGames.PlayerMovement3D
             rb.MovePosition(transform.position + newPos);
 
             // Calculate the rotation for the mouse movement
-            var h = horizontalMouseMovement * Input.GetAxis("Mouse X") * (invertHorizontalMouse ? -1 : 1);
-            var v = verticalMouseMovement * Input.GetAxis("Mouse Y") * (invertVerticalMouse ? -1 : 1);
+            var lookVec = lookAction.ReadValue<Vector2>();
+            var h = horizontalMouseMovement * lookVec.x * (invertHorizontalMouse ? -1 : 1);
+            var v = verticalMouseMovement * lookVec.y * (invertVerticalMouse ? -1 : 1);
 
             // Add the horizontal movement to the rotation of the camera
             transform.eulerAngles += new Vector3(0, h, 0);
