@@ -39,7 +39,7 @@ namespace MonumentGames.PlayerMovement3D
             float movSpeed = 0;
 
             // Look if Sprint Key is pressed and set movementSpeed accordingly
-            if (sprintAction.ReadValuey<bool>())
+            if (sprintAction.ReadValue<bool>())
                 movSpeed = sprintSpeed;
             else
                 movSpeed = movementSpeed;
