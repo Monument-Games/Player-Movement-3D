@@ -17,6 +17,7 @@ namespace MonumentGames.PlayerMovement3D
 
         private InputAction moveAction;
         private InputAction lookAction;
+        private InputAction sprintAction;
 
         public Camera cam;
 
@@ -30,6 +31,7 @@ namespace MonumentGames.PlayerMovement3D
 
             moveAction = InputSystem.actions.FindAction("Move");
             lookAction = InputSystem.actions.FindAction("Look");
+            sprintAction = InputSystem.actions.FindAction("Sprint");
         }
 
         public void Update()
@@ -37,7 +39,7 @@ namespace MonumentGames.PlayerMovement3D
             float movSpeed = 0;
 
             // Look if Sprint Key is pressed and set movementSpeed accordingly
-            if (Input.GetKeyn(Config.cfg.sprintKey))
+            if (sprintAction.ReadValue())
                 movSpeed = sprintSpeed;
             else
                 movSpeed = movementSpeed;
