@@ -2,6 +2,6 @@
 	"name": "MonumentGames.PlayerMovement3D",
     "references" : [
         "MonumentGames.Config",
-        "UnityEngine.InputSystem"
+        "Unity.InputSystem"
     ]
 }
